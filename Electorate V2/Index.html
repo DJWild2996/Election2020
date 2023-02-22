@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Election 2020</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #ff6600;
+  color: black;
+  font-size: 40px;
+  margin: 0 auto;
+}
+
+.button {
+  background-color: Black;
+  border: none;
+  color: White;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {width: 100%;}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+[class*="Candidate-"] {
+  float: right;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: lightgray;
+  padding-bottom: 520px;
+}
+
+[class*="Vote-"] {
+  float: left;
+  padding: 20px;
+  border: 1px solid black;
+  padding-bottom: 241px;
+}
+
+.Candidate-container {width: 50%;}
+.Vote-container {width: 50%;}
+
+p {
+  background-color: white;
+  width: 900px;
+  border: 5px solid black;
+  padding: 20px;
+  text-align: center;
+}
+
+[class*="heading"] {
+  background-color: black;
+  width: 900px;
+  border: 5px solid black;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.list {
+  background-color: white;
+  width: 900px;
+  padding: 5px;
+  margin: 1px;
+  color: black;
+  text-align: left;
+  list-style-type:none;
+}
+
+h2 {
+  text-align: center;
+}
+
+</style>  
+
+</head>
+
+<body>
+<body style="background-color:#FF8C00;">
+<div class="header">
+  <h1>New Zealand Election 2020</h1>
+  <h2>You Have 2 Votes</h2>
+</div>
+
+<body>
+
+<div class="row">
+
+<div class="Candidate-container"> 
+  <h2>Candidate Vote</h2>
+  <p>Explanation: This vote decides the candidate who will be the elected member of Parliment for the Ilam Electorate. Vote by checking the circle directly after the party you pick</p>
+  
+  <div class="gridContainer">
+    <div class="heading">Vote for only one party</div>
+  
+   <section id="candidates">
+
+
+      <li class="list" v-for="candidate in getCandidates()">
+        <span><input type="radio" name="candidate"></span>
+          <span  class="userOptionsCandidate" >{{candidate.name}}<span></li>
+
+
+
+  </section>
+</div>
+  <hr>
+</div>
+
+<div class="Vote-container"> 
+  <h2>Party Vote</h2>
+  <p>Explanation: This vote decides the share of seats which each of the parties listed below will have in parliament. Vote by putting a tick in the circle immediately after the party you choose.</p>
+  
+  <div class="gridContainer">
+    <div class="heading">Vote for only one candidate</div>
+  
+<section id="parties">
+
+
+      <li class="list" v-for="party in getParties()">
+          <span><input type="radio" name="party"></span>
+		  <span class="userOptionsParty" >{{party.name}}</span></li>
+  
+   </section>
+</div>
+  <hr>
+</div>
+
+<form action="http://127.0.0.1:5000/" method="POST">
+
+<button class="button button1">Submit Votes</button>
+
+</body>
+
+  </section>
+
+<script src='View.js'></script>
+
+
+<script src='Electorate.js'></script>
+
+
+<script src='Controller.js'></script>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+
+/* globals Vue */
+/* globals Controller */
+
+
+var app = new Vue({ // eslint-disable-line no-unused-vars
+  el: '#parties',
+  data: {
+    theElectorate: Controller.setup()
+  },
+  methods: {
+    getParties: function () {
+      return this.theElectorate.allMyParties
+    }
+  }
+}
+)
+
+
+var app1 = new Vue({ // eslint-disable-line no-unused-vars
+  el: '#candidates',
+  data: {
+    theElectorate: Controller.setup()
+  },
+  methods: {
+    getCandidates: function () {
+      return this.theElectorate.allMyCandidates
+    }
+  }
+}
+)
+</script>
+	
+
+	
+</body>
+
+</html>

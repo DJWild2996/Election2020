@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Election 2017</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<style>
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #ff6600;
+  color: black;
+  font-size: 40px;
+  margin: 0 auto;
+}
+
+.button {
+  background-color: Black;
+  border: none;
+  color: White;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {width: 100%;}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+[class*="Candidate-"] {
+  float: right;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: lightgray;
+  padding-bottom: 241px;
+}
+
+[class*="Vote-"] {
+  float: left;
+  padding: 10px;
+  border: 1px solid black;
+  padding-bottom: 241px;
+}
+
+.Candidate-container {width: 49%;}
+.Vote-container {width: 49%;}
+
+p {
+  background-color: white;
+  width: 900px;
+  border: 5px solid black;
+  padding: 20px;
+  text-align: center;
+}
+
+[class*="heading"] {
+  background-color: black;
+  width: 900px;
+  border: 5px solid black;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.list {
+  background-color: white;
+  width: 900px;
+  padding: 5px;
+  margin: 1px;
+  color: black;
+  text-align: left;
+  list-style-type:none;
+}
+
+h2 {
+  text-align: center;
+}
+
+
+
+</style>  
+
+</head>
+
+<body>
+<body style="background-color:#FF8C00;">
+<div class="header">
+  <h1>New Zealand Election 2017</h1>
+  <h2>These are the results of the last election</h2>
+</div>
+
+
+<form action="http://127.0.0.1:5000/" method="POST">
+
+<div class="Vote-container"> 
+  <h2>Total Party Votes</h2>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ['National', 'Labour', 'NZ First', 'Green', 'ACT', 'Opportunities', 'Maori', 'Legalise Cannabis', 'New Conservative', '	Mana', 'Ban 1080', 'Peoples Party', 'United Future', 'Outdoors', 'Democrats', 'Internet'],
+        datasets: [{
+            label: '# of Party Votes',
+            data: [1152075, 956184, 186706, 162443, 13075, 63261, 30580, 8075, 6253, 3642, 3005, 1890, 1782, 1620, 806, 499],
+            backgroundColor: [
+                'rgba(0, 0, 255)',
+                'rgba(255, 0, 0)',
+                'rgba(0,0,0)',
+                'rgba(0,255,0)',
+                'rgba(255,255,0)',
+                'rgba(0,128,128)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+				'rgba(128,0,0)',
+                'rgba(0,128,0)',
+                'rgba(0,0,128)',
+                'rgba(128,128,128)',
+                'rgba(128,0,0)',
+                'rgba(192,192,192)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+</div>
+
+<div class="Candidate-container"> 
+  <h2>Total Wairarapa Candidate Votes</h2>
+<canvas id="myChart2" width="400" height="400"></canvas>
+
+<script>
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart2 = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ['Alastair Scott', 'Kieran McAnulty', 'Ron Mark', 'John Hart', 'James Harold', 'Roger Greenslade'],
+        datasets: [{
+            label: '# of Candidate Votes',
+            data: [16514, 13642, 7753, 1683, 164, 130],
+            backgroundColor: [
+                'rgba(0, 0, 255)',
+                'rgba(255, 0, 0)',
+                'rgba(0,0,0)',
+                'rgba(0,255,0)',
+                'rgba(255,255,0)',
+                'rgba(0,128,128)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+</div>
+
+<div class="Vote-container"> 
+  <h2>Party Vote Percentage</h2>
+
+<canvas id="oilChart" width="600" height="400"></canvas>
+<script>
+var oilCanvas = document.getElementById("oilChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var oilData = {
+    labels: ['National', 'Labour', 'NZ First', 'Green', 'ACT', 'Opportunities', 'Maori', 'Legalise Cannabis', 'New Conservative', '	Mana', 'Ban 1080', 'Peoples Party', 'United Future', 'Outdoors', 'Democrats', 'Internet'],
+    datasets: [
+        {
+            data: [44.45, 36.89, 7.20, 6.27	, 0.50, 2.44, 1.18, 0.31, 0.24, 0.14, 0.12, 0.07, 0.07, 0.06, 0.03, 0.02],
+            backgroundColor: [
+                'rgba(0, 0, 255)',
+                'rgba(255, 0, 0)',
+                'rgba(0,0,0)',
+                'rgba(0,255,0)',
+                'rgba(255,255,0)',
+                'rgba(0,128,128)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+				'rgba(128,0,0)',
+                'rgba(0,128,0)',
+                'rgba(0,0,128)',
+                'rgba(128,128,128)',
+                'rgba(128,0,0)',
+                'rgba(192,192,192)'
+            ],
+        }]
+};
+
+var pieChart = new Chart(oilCanvas, {
+  type: 'pie',
+  data: oilData
+});
+</script>
+</div>
+<div class="Candidate-container"> 
+  <h2>Wairarapa Candidate Vote Percentage</h2>
+
+<canvas id="oilChart2" width="600" height="400"></canvas>
+<script>
+var oilCanvas2 = document.getElementById("oilChart2");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var oilData2 = {
+    labels: ['Alastair Scott', 'Kieran McAnulty', 'Ron Mark', 'John Hart', 'James Harold', 'Roger Greenslade'],
+    datasets: [
+        {
+            data: [41.40, 34.20, 19.44, 4.22, 0.41, 0.33],
+            backgroundColor: [
+                'rgba(0, 0, 255)',
+                'rgba(255, 0, 0)',
+                'rgba(0,0,0)',
+                'rgba(0,255,0)',
+                'rgba(255,255,0)',
+                'rgba(0,128,128)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+				'rgba(128,0,0)',
+                'rgba(0,128,0)',
+                'rgba(0,0,128)',
+                'rgba(128,128,128)',
+                'rgba(128,0,0)',
+                'rgba(192,192,192)'
+            ],
+        }]
+};
+
+var pieChart = new Chart(oilCanvas2, {
+  type: 'pie',
+  data: oilData2
+});
+</script>
+  
+<body>
+</html>
+
+</div>
+</style>  
+
+</head>
+	
+</body>
+
+</html>

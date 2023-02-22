@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Election 2020</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="Electorate.js"></script>
+
+<style>
+
+</style>  
+
+</head>
+
+<body>
+<div class="header">
+  <h1>New Zealand Election 2020</h1>
+</div>
+
+
+
+  <section id="Reign-Candidate">
+
+    <div id="input">
+      <input id="name" v-model="newFirstName"></input>
+      
+      <input id="color" v-model="newLastName"></input>
+      
+      <input id="cost" v-model="newElectorate"></input>
+      
+      <input id="Sign In" type="button" value="Sign In"  v-on:click="addCandidate"></input>
+      <br><br>
+    </div>
+
+    <output id="output"  v-if="hasData">
+    <ul>
+      <li v-for="Candidate in getCandidate()"> {{Candidate.FirstName}} from {{Candidate.Lastname}} is enrolled to vote in {{Candidate.Electorate}}</li>
+    </ul>
+    </output>
+  </section>
+  
+  <section>
+  <h3>Waiarapa Candidate Vote</h3>
+  <input type="radio" name="Candidate" v-model="color" value="0">Butterick, Mike - National Party<br>
+  <input type="radio" name="Candidate" v-model="color" value="1">Butterworth, Warren - New Conservative<br>
+  <input type="radio" name="Candidate" v-model="color" value="2">Greenslade, Roger - ACT NZ<br>
+  <input type="radio" name="Candidate" v-model="color" value="3">Mark, Ron - NZ First Party<br>
+  <input type="radio" name="Candidate" v-model="color" value="4">Mcanulty, Kieran - Labour Party<br>
+  <input type="radio" name="Candidate" v-model="color" value="5">Wade-Brown, Celia - Green party<br>
+  
+  <input id="Candidate Vote" type="button" value="Candidate Vote"  v-on:click="VoteCandidate"></input>
+  <br />
+  
+</section>
+
+<section>
+  <h3>Party Vote</h3>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">National Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Labour Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">New Zealand First<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Green Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">ACT Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Advance NZ<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">Opportunitites Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Maori Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">Legalise Cannabis Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">New Conservative Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">Mana Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Outdoors Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">Social Credit Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Heartland Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">ONE Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Sustainable NZ Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="a">TEA Party<br>
+  <input type="radio" name="Party" v-model="gender" v-bind:value="b">Vision NZ Party<br>
+  
+    <input id="Party Vote" type="button" value="Party Vote"  v-on:click="VoteParty"></input>
+  <br />
+  
+</section>
+
+
+  <script>
+    var app = new Vue({
+      el: '#Reign-Candidate',
+      data: {
+        newFirstName: '',
+        newLastName: '',
+        newElectorate: '',
+        hasData: false,
+        theReign: new Electorate()
+      },
+      methods: {
+        addCandidate: function () {
+          this.theReign.addCandidate(this.newFirstName, this.newLastName, this.newElectorate)
+          this.hasData = true
+          this.newFirstName = ''
+          this.newLastName = ''
+          this.newElectorate = ''
+        },
+        getCandidate: function () {
+          return this.theReign.allMyCandidate
+        }
+      }
+
+    })
+  </script>
+  
+  <script>
+	/* eslint-disable no-new */
+	var vm = new Vue({
+	el: document.body,
+	data: {
+		a: 0,
+		b: 1
+	}
+})
+
+  </script>
+<body>
+</html>

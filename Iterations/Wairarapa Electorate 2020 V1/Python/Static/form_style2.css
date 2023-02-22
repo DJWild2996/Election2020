@@ -1,0 +1,9 @@
+form {
+    border : black solid 1px;
+    border-collapse : collapse;
+    background-color : lightblue ;
+    border-radius : 20px;
+    padding : 10px;
+    width : 50%;
+    margin-left : 10%;
+}

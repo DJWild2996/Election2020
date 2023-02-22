@@ -1,0 +1,15 @@
+
+table {
+    position : relative ;
+    width : 50% ;
+    margin-left : ;
+}
+
+table, th, td {
+    border : black solid 1px;
+    border-collapse : collapse;
+}
+
+body {
+    width: 50%;
+}

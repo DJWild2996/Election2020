@@ -1,0 +1,89 @@
+<style>
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #ff6600;
+  color: black;
+  font-size: 40px;
+  margin: 0 auto;
+}
+
+.button {
+  background-color: Black;
+  border: none;
+  color: White;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {width: 100%;}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+[class*="Candidate-"] {
+  float: right;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: lightgray;
+  padding-bottom: 520px;
+}
+
+[class*="Vote-"] {
+  float: left;
+  padding: 20px;
+  border: 1px solid black;
+  padding-bottom: 241px;
+}
+
+.Candidate-container {width: 50%;}
+.Vote-container {width: 50%;}
+
+p {
+  background-color: white;
+  width: 900px;
+  border: 5px solid black;
+  padding: 20px;
+  text-align: center;
+}
+
+[class*="heading"] {
+  background-color: black;
+  width: 900px;
+  border: 5px solid black;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.list {
+  background-color: white;
+  width: 900px;
+  padding: 5px;
+  margin: 1px;
+  color: black;
+  text-align: left;
+  list-style-type:none;
+}
+
+h2 {
+  text-align: center;
+}
+
+</style>  

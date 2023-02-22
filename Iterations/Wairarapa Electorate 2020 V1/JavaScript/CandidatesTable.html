@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Election 2017</title>
+    <link rel="stylesheet" type="text/css" href="table_style.css">
+</head>
+
+<body>
+
+<script src='View.js'></script>
+
+
+<script src='Electorate.js'></script>
+
+
+<script src='Controller.js'></script>
+
+<script>
+
+function main() {
+  let theElectorate = Controller.setup()
+  clr()
+   console.log(theElectorate.toCandidateTable())
+  print(theElectorate.toCandidateTable())
+}
+
+window.onload = main
+</script>
+</body>
+
+</html>
